@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PackPilot AI - Lean Startup MVP</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar"></div>
+<div class="shell">
+  <div class="brand"><div class="logo"></div><div>PackPilot AI</div></div>
+
+  <section class="screen active" id="s1">
+    <div class="hero">
+      <div>
+        <div class="kicker">Lean startup MVP - hypothesis test</div>
+        <h1>Smarter packaging for every online store.</h1>
+        <p><b>Run one real-SKU audit.</b> Compare transparent packaging options, estimate an illustrative cost range and request a supplier quote. The MVP is designed to test customer behavior and willingness to pay before we build expensive integrations.</p>
+        <div class="tags"><span class="tag">Real SKU input</span><span class="tag rose">Transparent assumptions</span><span class="tag amber">Quote + pricing test</span></div>
+        <div class="actions"><button class="btn" onclick="go(2)">Start the MVP audit</button></div>
+      </div>
+      <div class="panel heroCard">
+        <h2>What this MVP tests</h2>
+        <div class="metric"><span>Problem hypothesis</span><b>Packaging decisions are painful</b></div>
+        <div class="metric"><span>Value hypothesis</span><b>Sellers act on recommendations</b></div>
+        <div class="metric"><span>Revenue hypothesis</span><b>They pay for continued use</b></div>
+        <div class="metric"><span>Partner hypothesis</span><b>Suppliers respond to qualified requests</b></div>
+        <p class="tiny">Prototype calculations are illustrative, not carrier quotes or guaranteed savings.</p>
+      </div>
+    </div>
+    <div class="leanBox"><b>Build-Measure-Learn:</b> Build only the critical journey, measure completion, quote requests and price choice, then iterate or pivot.</div>
+  </section>
+
+  <section class="screen" id="s2">
+    <div class="kicker">Step 1 - customer segment</div><h1>Seller profile</h1>
+    <div class="progress" data-step="1"></div>
+    <div class="grid2">
+      <div class="panel">
+        <label>Your role</label><select id="role"><option>Founder / owner</option><option>Operations manager</option><option>Fulfillment manager</option><option>Other</option></select>
+        <label>Store platform</label><select id="platform"><option>Shopify</option><option>WooCommerce</option><option>Amazon seller</option><option>Custom store</option></select>
+        <label>Product category</label><select id="category"><option>Cosmetics / beauty</option><option>Accessories</option><option>Small electronics</option><option>Home goods</option><option>Other</option></select>
+      </div>
+      <div class="panel">
+        <label>Monthly orders</label><input id="monthlyOrders" type="number" min="1" value="2500">
+        <label>Active SKUs</label><input id="activeSkus" type="number" min="1" value="85">
+        <label>Current packaging decision method</label><select id="method"><option>Supplier recommendation</option><option>Rules of thumb</option><option>Packaging consultant</option><option>Software / WMS</option><option>Not sure</option></select>
+        <div class="notice mint">This screen tests whether the user matches the initial beachhead and how packaging is chosen today.</div>
+      </div>
+    </div>
+    <div class="actions"><button class="btn ghost" onclick="go(1)">Back</button><button class="btn" onclick="go(3)">Continue</button></div>
+  </section>
+
+  <section class="screen" id="s3">
+    <div class="kicker">Step 2 - real SKU data</div><h1>Product details</h1>
+    <div class="progress" data-step="2"></div>
+    <div class="grid2">
+      <div class="panel">
+        <label>Product name</label><input id="productName" value="Glass serum bottle">
+        <div class="row3"><div><label>Length (cm)</label><input id="pL" type="number" step="0.1" min="0.1" value="12"></div><div><label>Width (cm)</label><input id="pW" type="number" step="0.1" min="0.1" value="4"></div><div><label>Height (cm)</label><input id="pH" type="number" step="0.1" min="0.1" value="4"></div></div>
+        <label>Product weight (kg)</label><input id="weight" type="number" step="0.01" min="0.01" value="0.18">
+      </div>
+      <div class="panel">
+        <label>Fragility</label><select id="fragility"><option value="high">High - glass / breakable</option><option value="medium">Medium - can be damaged</option><option value="low">Low - durable</option></select>
+        <label>Special requirements</label><textarea id="requirements" rows="5">Leak protection and presentable unboxing.</textarea>
+        <div class="notice">Lean assumption: sellers can provide accurate dimensions, weight and fragility without excessive effort. Missing data is itself an experiment result.</div>
+      </div>
+    </div>
+    <div class="actions"><button class="btn ghost" onclick="go(2)">Back</button><button class="btn" onclick="go(4)">Add current package</button></div>
+  </section>
+
+  <section class="screen" id="s4">
+    <div class="kicker">Step 3 - current alternative</div><h1>Current packaging and cost</h1>
+    <div class="progress" data-step="3"></div>
+    <div class="grid2">
+      <div class="panel">
+        <div class="row3"><div><label>Box length (cm)</label><input id="bL" type="number" step="0.1" min="0.1" value="20"></div><div><label>Box width (cm)</label><input id="bW" type="number" step="0.1" min="0.1" value="15"></div><div><label>Box height (cm)</label><input id="bH" type="number" step="0.1" min="0.1" value="10"></div></div>
+        <label>Current package material cost ($)</label><input id="materialCost" type="number" step="0.01" min="0" value="0.65">
+        <label>Average shipping cost per order ($)</label><input id="shippingCost" type="number" step="0.01" min="0" value="5.80">
+      </div>
+      <div class="panel">
+        <label>Current issue you most want to solve</label><select id="mainPain"><option>Packaging cost</option><option>Shipping cost</option><option>Product damage</option><option>Packaging waste</option><option>Slow sourcing / supplier comparison</option></select>
+        <label>How often do you review packaging?</label><select id="reviewFreq"><option>Only when a problem occurs</option><option>For every new SKU</option><option>Quarterly</option><option>Monthly</option><option>Never</option></select>
+        <div class="notice rose">This captures the current alternative and the root problem. The MVP does not assume that smaller packaging is always safer or cheaper.</div>
+      </div>
+    </div>
+    <div class="actions"><button class="btn ghost" onclick="go(3)">Back</button><button class="btn" onclick="calculateAudit()">Run transparent audit</button></div>
+  </section>
+
+  <section class="screen" id="s5">
+    <div class="kicker">Step 4 - audit result</div><h1>Current-package diagnosis</h1>
+    <div class="progress" data-step="4"></div>
+    <div class="resultHero">
+      <div class="panel"><div class="muted small">Estimated empty-volume ratio</div><div class="bigNumber" id="voidRatio">-</div><p id="voidExplain"></p></div>
+      <div class="panel"><div class="muted small">Dimensional-weight comparison</div><div class="bigNumber" id="dimDelta">-</div><p id="dimExplain"></p></div>
+    </div>
+    <div class="grid3">
+      <div class="card"><h3>Observed issue</h3><p id="observedIssue"></p></div>
+      <div class="card"><h3>Protection rule</h3><p id="protectionRule"></p></div>
+      <div class="card"><h3>Estimated monthly opportunity</h3><p><span class="bigNumber" id="monthlyOpportunity">-</span></p><p class="tiny">Illustrative range based on the inputs and assumptions shown below.</p></div>
+    </div>
+    <div class="notice" style="margin-top:18px"><b>Assumptions:</b> dimensional divisor 5,000 cm3/kg; one unit per parcel; no negotiated carrier tiers, returns, labor or damage costs included; recommendation requires supplier and packaging-safety review.</div>
+    <div class="actions"><button class="btn ghost" onclick="go(4)">Edit inputs</button><button class="btn" onclick="renderOptions();go(6)">Compare options</button></div>
+  </section>
+
+  <section class="screen" id="s6">
+    <div class="kicker">Step 5 - value test</div><h1>Compare packaging options</h1>
+    <div class="progress" data-step="5"></div>
+    <div class="grid3" id="options"></div>
+    <div class="notice mint" style="margin-top:18px"><b>Transparent MVP:</b> each option shows its trade-off and calculation basis. Advanced AI, multi-item packing and carrier integrations are intentionally excluded until customers act on this simpler result.</div>
+    <div class="actions"><button class="btn ghost" onclick="go(5)">Back to diagnosis</button><button class="btn" id="continueOption" disabled onclick="go(7)">Continue with selected option</button></div>
+  </section>
+
+  <section class="screen" id="s7">
+    <div class="kicker">Step 6 - partner action</div><h1>Supplier quote request</h1>
+    <div class="progress" data-step="6"></div>
+    <div class="grid2">
+      <div class="quoteSummary" id="quoteSummary"></div>
+      <div class="panel noPrint">
+        <label>Business email</label><input id="email" type="email" placeholder="name@store.com">
+        <label>Target quantity per month</label><input id="quoteQty" type="number" min="1" value="2500">
+        <label>Permission to share the SKU specification with matched suppliers</label><select id="permission"><option value="yes">Yes</option><option value="no">No</option></select>
+        <div class="notice">In a live pilot, the founders manually match the request to suppliers and measure response time. This prototype does not send data anywhere.</div>
+      </div>
+    </div>
+    <div class="actions noPrint"><button class="btn ghost" onclick="go(6)">Back</button><button class="btn" onclick="submitQuote()">Create prototype quote request</button></div>
+  </section>
+
+  <section class="screen" id="s8">
+    <div class="kicker">Step 7 - revenue and learning</div><h1>Would this create enough value to pay?</h1>
+    <div class="progress" data-step="7"></div>
+    <div class="grid2">
+      <div class="panel">
+        <label>How clear was the recommendation?</label><div class="scoreButtons" id="clarityScores"></div>
+        <label>What would you do next?</label><select id="nextAction"><option>Request a real supplier quote</option><option>Audit another SKU</option><option>Share with my operations team</option><option>Do nothing yet</option></select>
+        <label>Which price would you seriously consider after a successful pilot?</label><select id="priceChoice"><option>$299 paid pilot</option><option>$99/month subscription</option><option>5% supplier success fee</option><option>Per-audit price</option><option>I would not pay</option></select>
+        <label>What is missing?</label><textarea id="feedback" rows="4" placeholder="Tell us what would stop you from using or paying for this."></textarea>
+      </div>
+      <div class="panel heroCard">
+        <h2>Evidence generated</h2>
+        <div class="metric"><span>Real SKU entered</span><b>Yes</b></div>
+        <div class="metric"><span>Audit completed</span><b>Yes</b></div>
+        <div class="metric"><span>Option selected</span><b id="evidenceOption">-</b></div>
+        <div class="metric"><span>Quote request</span><b id="evidenceQuote">-</b></div>
+        <div class="metric"><span>Payment choice</span><b id="evidencePrice">Pending</b></div>
+        <p class="tiny">This evidence is stronger than a generic "I like the idea" response.</p>
+      </div>
+    </div>
+    <div class="actions"><button class="btn ghost" onclick="go(7)">Back</button><button class="btn" onclick="finish()">Submit feedback and view learning summary</button></div>
+  </section>
+
+  <section class="screen" id="s9">
+    <div class="kicker">Build-Measure-Learn summary</div><h1>Prototype experiment completed</h1>
+    <div class="grid2">
+      <div class="panel" id="finalSummary"></div>
+      <div class="panel">
+        <h2>Decision logic for the founders</h2>
+        <div class="metric"><span>Recommendation accepted</span><b>Count toward 6/10 target</b></div>
+        <div class="metric"><span>Quote request created</span><b>Count toward 3/10 target</b></div>
+        <div class="metric"><span>Paid price selected</span><b>Follow with real payment test</b></div>
+        <div class="metric"><span>Missing features / objections</span><b>Use for iteration</b></div>
+        <p>If the experiment repeatedly fails the pre-agreed thresholds, PackPilot changes the segment, workflow, payer, channel or revenue model instead of scaling the original assumption.</p>
+      </div>
+    </div>
+    <div class="actions"><button class="btn" onclick="window.print()">Print experiment summary</button><button class="btn ghost" onclick="restart()">Restart prototype</button></div>
+  </section>
+</div>
+<div class="footer">PackPilot AI - Abdalla Zoabi and Lian Elbiadssa | Lean Startup MVP</div>
+<script src="app.js"></script>
+</body>
+</html>
